@@ -53,7 +53,7 @@ namespace batteryinformation
             if (batteryFlag == 255)
                 return "unknown";
             if ((batteryFlag & 128) != 0)
-                return "battery does not exist";
+                return "no system battery";
             var chargedLevel = batteryFlag & 7;
             var chargingFlag = batteryFlag & 8;
             return $"Charged level={chargedLevel}({ChargedLevelToString(chargedLevel)}), "
@@ -63,20 +63,20 @@ namespace batteryinformation
         static string BatteryLifePercentToString(byte batteryLifePercent)
         {
             if (batteryLifePercent == 255)
-                return "(unknown)";
+                return "unknown";
             return $"{batteryLifePercent} %";
         }
 
         static string BatteryLifeTimeToString(int batteryLifeTime)
         {
             if (batteryLifeTime < 0)
-                return "(unknown)";
+                return "unknown";
             return $"{batteryLifeTime} sec";
         }
         static string BatteryFullLifeTimeToString(int batteryFullLifeTime)
         {
             if (batteryFullLifeTime < 0)
-                return "(unknown)";
+                return "unknown";
             return $"{batteryFullLifeTime} sec";
         }
     }
